@@ -22,12 +22,13 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Run tests
-        run: mvn test
+      - name: Build with Maven
+        run: mvn clean package
         working-directory: ./api
 
   test:
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Checkout code
