@@ -1,3 +1,4 @@
+@@ -1,37 +0,0 @@
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
@@ -35,3 +36,7 @@ build/
 /.mvn/wrapper/maven-wrapper.properties
 /mvnw
 /mvnw.cmd
+/api/.gitattributes
+/api/.mvn/wrapper/maven-wrapper.properties
+/api/mvnw
+/api/mvnw.cmd
