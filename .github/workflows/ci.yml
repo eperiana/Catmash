@@ -24,6 +24,8 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package
+        working-directory: ./api
 
       - name: Run tests
         run: mvn test
+        working-directory: ./api
