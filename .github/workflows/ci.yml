@@ -26,7 +26,7 @@ jobs:
         run: mvn clean package -DskipTests=true
         working-directory: ./api
 
-  unit-tests:
+  tests:
     runs-on: ubuntu-latest
     needs: build
 
@@ -40,25 +40,6 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Run Unit Tests
-        run: mvn clean install -DskipITs
-        working-directory: ./api
-
-  integration-tests:
-    name: Run Integration Tests
-    runs-on: ubuntu-latest
-    needs: unit-tests
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '21'
-
-      - name: Run Integration Tests
-        run: mvn verify
+      - name: Run Tests
+        run: mvn clean install
         working-directory: ./api
