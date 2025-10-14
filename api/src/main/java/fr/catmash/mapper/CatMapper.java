@@ -16,9 +16,4 @@ public class CatMapper {
     public List<CatDto> toDtos(final List<Cat> cats){
         return cats.stream().map(this::toDto).toList();
     }
-
-    public void updateEntityFromDto(final Cat cat, final CatDto dto){
-        cat.setVoteCounter(dto.voteCounter());
-        cat.setUrl(dto.url());
-    }
 }

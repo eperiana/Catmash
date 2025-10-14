@@ -11,20 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CatMapperTest {
     private final CatMapper catMapper = new CatMapper();
-
-    @Test
-    void testUpdateEntityFromDto(){
-        final Cat catToUpdate = new Cat(1L, null, 1L);
-        final CatDto dto = new CatDto(1L, "/url-sympa.fr", 1L);
-
-        catMapper.updateEntityFromDto(catToUpdate, dto);
-
-        assertEquals(1L, catToUpdate.getVoteCounter());
-        assertEquals("/url-sympa.fr", catToUpdate.getUrl());
-
-    }
-
-    @Test
+        @Test
     void testToDto(){
         final Cat cat = new Cat(1L, "url-sympa.fr", 1L);
         final CatDto dto = catMapper.toDto(cat);
