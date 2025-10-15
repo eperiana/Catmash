@@ -40,3 +40,6 @@ build/
 /api/.mvn/wrapper/maven-wrapper.properties
 /api/mvnw
 /api/mvnw.cmd
+spa/src/assets/.gitkeep
+spa/.editorconfig
+spa/.gitignore
