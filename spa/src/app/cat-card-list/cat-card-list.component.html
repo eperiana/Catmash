@@ -1,1 +1,26 @@
-<p>cat-card-list works!</p>
+@if (cats().length != 0) {
+    <div class="top3">
+    <div class="podium podium-2">
+        <img [src]="cats()[1].url" [alt]="'Chat #' + cats()[1].id" />
+        <p>Score : {{ cats()[1].voteCounter }}pts</p>
+    </div>
+
+    <div class="podium podium-1">
+        <img [src]="cats()[0].url" [alt]="'Chat #' + cats()[0].id" />
+        <p>Score : {{ cats()[0].voteCounter }}pts</p>
+    </div>
+
+    <div class="podium podium-3">
+        <img [src]="cats()[2].url" [alt]="'Chat #' + cats()[2].id" />
+        <p>Score : {{ cats()[2].voteCounter }}pts</p>
+    </div>
+    </div>
+
+    <div class="rest-cats" *ngIf="cats().length > 3">
+    <div class="cat-card" *ngFor="let cat of cats().slice(3); let i = index"
+     [style.animation-delay]="i * 0.05 + 's'">
+        <img [src]="cat.url" [alt]="'Chat #' + cat.id" />
+        <p>Score : {{ cat.voteCounter }}pts</p>
+    </div>
+    </div>
+}
