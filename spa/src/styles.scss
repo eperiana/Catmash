@@ -1,1 +1,114 @@
-/* You can add global styles to this file, and also import other style files */
+$color-primary: #ff6b35;
+$color-secondary: #ffd166;
+$color-dark: #2d2d2d;
+$color-light: #fafafa;
+
+$color-success: #06d6a0;
+$color-error: #ef476f;
+$color-info: #118ab2;
+
+$color-border: #e0e0e0;
+$color-muted: #9e9e9e;
+
+$color-primary-hover: darken($color-primary, 8%);
+$color-secondary-hover: darken($color-secondary, 6%);
+
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+
+:root {
+  --color-primary: #{$color-primary};
+  --color-primary-hover: #{$color-primary-hover};
+  --color-secondary: #{$color-secondary};
+  --color-secondary-hover: #{$color-secondary-hover};
+
+  --color-dark: #{$color-dark};
+  --color-light: #{$color-light};
+
+  --color-success: #{$color-success};
+  --color-error: #{$color-error};
+  --color-info: #{$color-info};
+
+  --color-border: #{$color-border};
+  --color-muted: #{$color-muted};
+
+  --font-family: 'Poppins', sans-serif;
+  --background-color: var(--color-light);
+  --text-color: var(--color-dark);
+}
+
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  padding: 1rem;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 1rem 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.8rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.5rem;
+  }
+}
+
+p {
+  font-size: 1rem;
+  @media (max-width: $breakpoint-sm) {
+    font-size: 0.9rem;
+  }
+}
