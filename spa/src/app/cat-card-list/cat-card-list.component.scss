@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: flex-end;
   gap: 2rem;
-  margin: 2rem 0;
+  margin: 50px 0;
 
   .podium {
     text-align: center;
@@ -107,6 +107,22 @@
     }
   }
 }
+
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+
+  &.badge-gold { color: #FFD700; }
+  &.badge-silver { color: #C0C0C0; }
+  &.badge-bronze { color: #CD7F32; }
+}
+
+.top3 .podium {
+  position: relative; // nécessaire pour que le badge soit positionné correctement
+}
+
 
 @keyframes fadeInUp {
   to {

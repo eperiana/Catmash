@@ -1,11 +1,12 @@
 import { Component, effect, inject, OnInit } from '@angular/core';
 import { CatService } from '../services/cat.service';
 import { CommonModule } from '@angular/common';
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'app-cat-card-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FaIconComponent],
   templateUrl: './cat-card-list.component.html',
   styleUrl: './cat-card-list.component.scss'
 })
