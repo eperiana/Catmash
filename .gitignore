@@ -43,3 +43,4 @@ build/
 spa/src/assets/.gitkeep
 spa/.editorconfig
 spa/.gitignore
+*.css
