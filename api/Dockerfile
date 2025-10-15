@@ -24,9 +24,6 @@ WORKDIR /app
 # Copier le jar construit depuis l'étape précédente
 COPY --from=builder /app/target/*.jar app.jar
 
-# Définir le profil prod
-ENV SPRING_PROFILES_ACTIVE=prod
-
 # Exposer le port défini par Render (variable d'environnement PORT)
 EXPOSE 8080
 
