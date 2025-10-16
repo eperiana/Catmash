@@ -1,29 +1,23 @@
-@if (cats().length != 0) {
-    <div class="top3">
-        <div class="podium podium-2">
-            <fa-icon [icon]="['fas', 'trophy']" class="badge badge-silver"></fa-icon>
-            <img [src]="cats()[1].url" [alt]="'Chat #' + cats()[1].id" />
-            <p>Score : {{ cats()[1].voteCounter }}pts</p>
+<div class="cat-card-list-page">
+    @if (cats().length === 0) {
+        <p>Chargement des chats...</p>
+    } @else {
+        <div class="top3">
+                <app-cat-card [cat]="cats()![1]" [position]="2"></app-cat-card>
+                <app-cat-card [cat]="cats()![0]" [position]="1"></app-cat-card>
+                <app-cat-card [cat]="cats()![2]" [position]="3"></app-cat-card>
         </div>
+        <div class="cat-card-list">
+            <div class="rest-cats">
+                @for (cat of cats()!.slice(3); track cat.id; let i = $index) {
+                    <app-cat-card
+                    [cat]="cat"
+                    [position]="i + 4"
+                    />
+                }
+            </div>
+        </div>
+    }
+</div>
 
-        <div class="podium podium-1">
-            <fa-icon [icon]="['fas', 'trophy']" class="badge badge-gold"></fa-icon>
-            <img [src]="cats()[0].url" [alt]="'Chat #' + cats()[0].id" />
-            <p>Score : {{ cats()[0].voteCounter }}pts</p>
-        </div>
 
-        <div class="podium podium-3">
-            <fa-icon [icon]="['fas', 'trophy']" class="badge badge-bronze"></fa-icon>
-            <img [src]="cats()[2].url" [alt]="'Chat #' + cats()[2].id" />
-            <p>Score : {{ cats()[2].voteCounter }}pts</p>
-        </div>
-    </div>
-
-    <div class="rest-cats" *ngIf="cats().length > 3">
-        <div class="cat-card" *ngFor="let cat of cats().slice(3); let i = index"
-        [style.animation-delay]="i * 0.05 + 's'">
-            <img [src]="cat.url" [alt]="'Chat #' + cat.id" />
-            <p>Score : {{ cat.voteCounter }}pts</p>
-        </div>
-    </div>
-}

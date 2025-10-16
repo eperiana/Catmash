@@ -1,132 +1,77 @@
 @use '../../styles.scss' as *;
 
+.cat-card-list {
+  padding: 2rem 1rem;
+}
+
+.cat-card-list-page {
+    background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+}
+
 
 .top3 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 2rem;
-  margin: 50px 0;
+  margin-top: 2rem;
 
-  .podium {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    img {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border: 3px solid var(--color-primary);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transform: translateY(20px);
-      opacity: 0;
-      animation: fadeInUp 0.5s forwards;
-    }
-
-    p {
-      margin-top: 0.5rem;
-      font-weight: 600;
-      color: var(--color-dark);
-    }
+  app-cat-card {
+    flex: 1;
+    max-width: 220px;
   }
 
-  .podium-1 {
-    transform: translateY(-30px);
-    img {
-      width: 120px;
-      height: 120px;
-      border-color: var(--color-secondary);
-      animation-delay: 0.1s;
-    }
+  // Hauteurs différentes pour podium
+  app-cat-card:nth-child(1) {
+    transform: translateY(1rem);
   }
 
-  .podium-2 {
+  app-cat-card:nth-child(2) {
     transform: translateY(0);
-    img {
-      border-color: var(--color-primary);
-      animation-delay: 0.2s;
-    }
+    max-width: 280px;
   }
 
-  .podium-3 {
-    transform: translateY(0);
-    img {
-      border-color: var(--color-info);
-      animation-delay: 0.3s;
+  app-cat-card:nth-child(3) {
+    transform: translateY(1.5rem);
+  }
+
+ @media (max-width: $breakpoint-md) {
+    gap: 1.5rem;
+
+    app-cat-card {
+      max-width: 200px;
     }
   }
 
   @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    align-items: center;
     gap: 1rem;
+    margin-top: 1rem;
 
-    .podium-1 img { width: 90px; height: 90px; }
-    .podium-2 img,
-    .podium-3 img { width: 80px; height: 80px; }
+    app-cat-card {
+      max-width: 180px;
+      width: 100%;
+      transform: none !important;
+    }
   }
 }
 
 .rest-cats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
   margin-top: 2rem;
 
-  .cat-card {
-    background-color: var(--color-light);
-    border-radius: 0.75rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    text-align: center;
-    padding: 1rem;
-    transform: translateY(20px);
-    opacity: 0;
-    animation: fadeInUp 0.4s forwards;
-
-    img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 0.5rem;
-      border: 2px solid var(--color-border);
-    }
-
-    p {
-      margin-top: 0.25rem;
-      font-weight: 500;
-      font-size: 1rem;
-      color: var(--color-dark);
-    }
-
-    @media (max-width: $breakpoint-sm) {
-      padding: 0.5rem;
-
-      img { height: 80px; }
-      p { font-size: 0.9rem; }
-    }
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
-}
 
-.badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 1.5rem;
-
-  &.badge-gold { color: #FFD700; }
-  &.badge-silver { color: #C0C0C0; }
-  &.badge-bronze { color: #CD7F32; }
-}
-
-.top3 .podium {
-  position: relative; // nécessaire pour que le badge soit positionné correctement
-}
-
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 }
