@@ -38,12 +38,12 @@ export class CatService {
   vote(catId: number) {
     return this.http.post(`${this.apiUrl}/vote/${catId}`, {}).pipe(
       tap(() =>
-        this._cats.update(oldCats =>
+        this._cats.update(oldCats => 
           oldCats.map(cat =>
             cat.id === catId
               ? { ...cat, voteCounter: cat.voteCounter + 1 }
               : cat
-          )
+          ).sort((a,b) => b.voteCounter - a.voteCounter)
         )
       )
     );
