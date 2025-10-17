@@ -65,7 +65,7 @@ jobs:
         run: |
           echo "export const environment = {
             production: true,
-            apiUrl: 'https://catmash-im37.onrender.com/api',
+            apiUrl: 'https://catmash-im37.onrender.com/api/cats',
             apiKey: '${{ secrets.API_KEY }}'
           };" > ./spa/src/environments/environment.prod.ts
 
