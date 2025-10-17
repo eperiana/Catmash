@@ -84,3 +84,17 @@ jobs:
                --header "authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
                --header 'content-type: application/json' \
                --data '{"clearCache":"do_not_clear"}'
+
+  deploy-front:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: [ build-front, test-api ]
+    steps:
+      - name: Deploy Front on Render
+        run: |
+          curl --request POST \
+               --url https://api.render.com/v1/services/srv-d3p1jfd6ubrc73am2ltg/deploys \
+               --header 'accept: application/json' \
+               --header "authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+               --header 'content-type: application/json' \
+               --data '{"clearCache":"do_not_clear"}'
