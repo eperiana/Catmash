@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 6rem;
   background: radial-gradient(
     circle at center,
     rgba(138, 43, 226, 0.25),
@@ -119,22 +120,53 @@
 }
 
 @media (max-width: 768px) {
-  .battle-wrapper {
-    flex-direction: column;
-    gap: 1.5rem;
+  .battle-page {
+    padding-bottom: 7rem;
   }
 
-  .battle-block .cat-img {
-    width: 90%;
-    aspect-ratio: 4 / 3;
+  .battle-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+
+  .battle-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .cat-img {
+      width: 90%;
+      height: 200px;
+      max-height: 60vh;
+      border-radius: 1.2rem;
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.4);
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 35px rgba(255, 0, 255, 0.6);
+      }
+    }
+
+    .vote-btn {
+      width: 85%;
+      max-width: 320px;
+      font-size: 1rem;
+      padding: 1rem 1.3rem;
+      margin-top: 0.8rem;
+      border-radius: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
   }
 
   .battle-center .vs-text {
-    font-size: 3rem;
-  }
-
-  .battle-block .vote-btn {
-    width: 80%;
-    font-size: 1rem;
+    font-size: 3.2rem;
+    margin: 1.5rem 0;
+    text-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
   }
 }
