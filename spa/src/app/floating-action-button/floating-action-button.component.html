@@ -1,0 +1,8 @@
+<div class="fab-container" (click)="onClick()">
+  <p class="fab-text">
+    {{ mode === 'battle' ? 'Voir le classement des chats' : 'Revenir au vote' }}
+  </p>
+  <span class="fab-subtext">
+    {{ matchesPlayed() }} match{{ matchesPlayed() > 1 ? 's' : '' }} joué{{ matchesPlayed() > 1 ? 's' : '' }}
+  </span>
+</div>
