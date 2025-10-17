@@ -1,6 +1,6 @@
 <div class="cat-card-list-page">
     @if (cats().length === 0) {
-        <p>Chargement des chats...</p>
+        <app-loading-spinner></app-loading-spinner>
     } @else {
         <div class="top3">
                 <app-cat-card [cat]="cats()![1]" [position]="2"></app-cat-card>

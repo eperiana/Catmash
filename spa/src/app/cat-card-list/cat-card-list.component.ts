@@ -2,11 +2,12 @@ import { Component, effect, inject, OnInit } from '@angular/core';
 import { CatService } from '../services/cat.service';
 import { CommonModule } from '@angular/common';
 import { CatCardComponent } from "../cat-card/cat-card.component";
+import { LoadingSpinnerComponent } from "../loading-spinner/loading-spinner.component";
 
 @Component({
   selector: 'app-cat-card-list',
   standalone: true,
-  imports: [CommonModule, CatCardComponent],
+  imports: [CommonModule, CatCardComponent, LoadingSpinnerComponent],
   templateUrl: './cat-card-list.component.html',
   styleUrl: './cat-card-list.component.scss'
 })
