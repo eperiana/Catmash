@@ -28,11 +28,12 @@ export class CatService {
   }
   
   fetchCats() {
-    this.http.get<Cat[]>(this.apiUrl).subscribe({
-      next: (data) => this._cats.set(data),
-      error: (err) => console.error('Erreur API', err)
-    });
-
+    setTimeout(() => {
+      this.http.get<Cat[]>(this.apiUrl).subscribe({
+        next: (data) => this._cats.set(data),
+        error: (err) => console.error('Erreur API', err)
+      });
+    }, 1500);
   }
 
   vote(catId: number) {
