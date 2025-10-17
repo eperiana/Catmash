@@ -5,7 +5,7 @@ import { BattleComponent } from './battle/battle.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'hiscore', pathMatch: 'full' },
-  { path: 'hiscore', component: CatCardListComponent },
+  { path: 'ranking', component: CatCardListComponent },
   { path: 'battle', component: BattleComponent},
   { path: '**', component: NotFoundComponent }
 ];
