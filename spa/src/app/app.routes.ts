@@ -4,7 +4,7 @@ import { CatCardListComponent } from './cat-card-list/cat-card-list.component';
 import { BattleComponent } from './battle/battle.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'hiscore', pathMatch: 'full' },
+  { path: '', redirectTo: 'ranking', pathMatch: 'full' },
   { path: 'ranking', component: CatCardListComponent },
   { path: 'battle', component: BattleComponent},
   { path: '**', component: NotFoundComponent }
