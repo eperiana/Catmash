@@ -1,23 +1,27 @@
-<div class="cat-card-list-page">
-    @if (cats().length === 0) {
-        <app-loading-spinner></app-loading-spinner>
-    } @else {
-        <div class="top3">
-                <app-cat-card [cat]="cats()![1]" [position]="2"></app-cat-card>
-                <app-cat-card [cat]="cats()![0]" [position]="1"></app-cat-card>
-                <app-cat-card [cat]="cats()![2]" [position]="3"></app-cat-card>
-        </div>
-        <div class="cat-card-list">
-            <div class="rest-cats">
-                @for (cat of cats()!.slice(3); track cat.id; let i = $index) {
-                    <app-cat-card
-                    [cat]="cat"
-                    [position]="i + 4"
-                    />
-                }
+@if (isLoading()) {
+    <app-loading-spinner></app-loading-spinner>
+} @else {
+    <div class="cat-card-list-page">
+        @if (cats().length !== 0) {        
+            <div class="top3">
+                    <app-cat-card [cat]="cats()![1]" [position]="2"></app-cat-card>
+                    <app-cat-card [cat]="cats()![0]" [position]="1"></app-cat-card>
+                    <app-cat-card [cat]="cats()![2]" [position]="3"></app-cat-card>
             </div>
-        </div>
-    }
-</div>
+            <div class="cat-card-list">
+                <div class="rest-cats">
+                    @for (cat of cats()!.slice(3); track cat.id; let i = $index) {
+                        <app-cat-card
+                        [cat]="cat"
+                        [position]="i + 4"
+                        />
+                    }
+                </div>
+            </div>
+            <app-floating-action-button mode="ranking"></app-floating-action-button>
+        }
+    </div>
+}
+
 
 

@@ -6,7 +6,7 @@
       <div class="battle-wrapper">
         <div class="battle-block">
           <div class="cat-img" [style.background-image]="'url(' + leftCat()!.url + ')'"></div>
-          <button class="vote-btn" (click)="vote('left')">Vote Gauche</button>
+          <button class="vote-btn" (click)="vote('left')">J'aime</button>
         </div>
 
         <div class="battle-center">
@@ -15,9 +15,11 @@
 
         <div class="battle-block">
           <div class="cat-img" [style.background-image]="'url(' + rightCat()!.url + ')'"></div>
-          <button class="vote-btn" (click)="vote('right')">Vote Droite</button>
+          <button class="vote-btn" (click)="vote('right')">J'aime</button>
         </div>
       </div>
     </div>
   }
+  <app-floating-action-button mode="battle"></app-floating-action-button>
+
 }
