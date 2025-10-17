@@ -1,71 +1,119 @@
+@use '../../styles.scss' as *;
+
 .battle-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-secondary) 100%
+  background: radial-gradient(
+    circle at center,
+    rgba(138, 43, 226, 0.25),
+    rgba(10, 10, 20, 0.95)
   );
-  color: white;
-  gap: 1.5rem;
+  color: var(--color-light);
+  gap: 2rem;
   padding: 2rem;
   flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+
+  // léger effet de brume / profondeur
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at top right,
+      rgba(255, 0, 255, 0.15),
+      transparent 60%
+    );
+    z-index: 0;
+  }
 }
 
+/* 🐱 Les deux chats */
 .cat-side {
   flex: 1 1 40%;
   aspect-ratio: 1 / 1;
   background-size: cover;
   background-position: center;
   border-radius: 1rem;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 20px rgba(153, 50, 204, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
 
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.1)
+    );
   }
 }
 
+/* ⚔️ VS et bouton Vote */
 .vs-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  z-index: 2;
 
   .vs-text {
     font-size: 3rem;
     font-weight: bold;
-    color: var(--color-light);
+    color: var(--color-secondary);
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
   }
 
   .vote-btn {
-    background-color: var(--color-dark);
-    color: var(--color-light);
+    background: linear-gradient(
+      90deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    color: white;
     border: none;
-    padding: 0.8rem 1.6rem;
+    padding: 0.9rem 2rem;
     border-radius: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 
     &:hover {
-      background-color: var(--color-primary-hover);
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.6);
+      transform: translateY(-2px);
     }
 
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+      box-shadow: none;
     }
   }
 }
 
+/* 📱 Responsive */
 @media (max-width: 768px) {
   .battle-container {
     flex-direction: column;
     height: auto;
+    gap: 1.5rem;
+    padding: 1.5rem;
   }
 
   .cat-side {
@@ -80,6 +128,11 @@
     .vs-text {
       font-size: 2rem;
       margin: 0 1rem;
+    }
+
+    .vote-btn {
+      font-size: 0.9rem;
+      padding: 0.7rem 1.4rem;
     }
   }
 }
