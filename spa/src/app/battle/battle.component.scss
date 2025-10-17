@@ -1,23 +1,20 @@
 @use '../../styles.scss' as *;
 
-.battle-container {
+.battle-page {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background: radial-gradient(
     circle at center,
     rgba(138, 43, 226, 0.25),
     rgba(10, 10, 20, 0.95)
   );
   color: var(--color-light);
-  gap: 2rem;
   padding: 2rem;
-  flex-wrap: wrap;
-  position: relative;
   overflow: hidden;
+  position: relative;
 
-  // léger effet de brume / profondeur
   &::after {
     content: "";
     position: absolute;
@@ -31,58 +28,49 @@
   }
 }
 
-/* 🐱 Les deux chats */
-.cat-side {
-  flex: 1 1 40%;
-  aspect-ratio: 1 / 1;
-  background-size: cover;
-  background-position: center;
-  border-radius: 1rem;
-  box-shadow: 0 0 20px rgba(153, 50, 204, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.battle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
   position: relative;
   z-index: 1;
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 1rem;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.1)
-    );
-  }
+  flex-wrap: wrap;
 }
 
-/* ⚔️ VS et bouton Vote */
-.vs-container {
+.battle-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  z-index: 2;
+  gap: 1rem;
 
-  .vs-text {
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--color-secondary);
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+  .cat-img {
+    width: 280px;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(153, 50, 204, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
   }
 
   .vote-btn {
-    background: linear-gradient(
-      90deg,
-      var(--color-primary),
-      var(--color-secondary)
-    );
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
     color: white;
     border: none;
     padding: 0.9rem 2rem;
@@ -96,7 +84,7 @@
 
     &:hover {
       box-shadow: 0 0 25px rgba(255, 0, 255, 0.6);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     &:disabled {
@@ -107,32 +95,46 @@
   }
 }
 
-/* 📱 Responsive */
+.battle-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .vs-text {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--color-secondary);
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+    animation: pulseGlow 1.5s infinite alternate;
+  }
+}
+
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 25px rgba(255, 0, 255, 0.9);
+  }
+}
+
 @media (max-width: 768px) {
-  .battle-container {
+  .battle-wrapper {
     flex-direction: column;
-    height: auto;
     gap: 1.5rem;
-    padding: 1.5rem;
   }
 
-  .cat-side {
-    width: 100%;
+  .battle-block .cat-img {
+    width: 90%;
     aspect-ratio: 4 / 3;
   }
 
-  .vs-container {
-    flex-direction: row;
-    justify-content: center;
+  .battle-center .vs-text {
+    font-size: 3rem;
+  }
 
-    .vs-text {
-      font-size: 2rem;
-      margin: 0 1rem;
-    }
-
-    .vote-btn {
-      font-size: 0.9rem;
-      padding: 0.7rem 1.4rem;
-    }
+  .battle-block .vote-btn {
+    width: 80%;
+    font-size: 1rem;
   }
 }

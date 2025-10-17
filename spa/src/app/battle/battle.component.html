@@ -1,20 +1,23 @@
-@if(isLoading()){
-    <app-loading-spinner mode="battle"></app-loading-spinner>
+@if (isLoading()) {
+  <app-loading-spinner mode="battle"></app-loading-spinner>
 } @else {
-    @if (leftCat() != undefined && rightCat() != undefined) {
-    <div class="battle-container">
-        <div class="cat-side left" [style.background-image]="'url(' + leftCat()!.url + ')'">
+  @if (leftCat() && rightCat()) {
+    <div class="battle-page">
+      <div class="battle-wrapper">
+        <div class="battle-block">
+          <div class="cat-img" [style.background-image]="'url(' + leftCat()!.url + ')'"></div>
+          <button class="vote-btn" (click)="vote('left')">Vote Gauche</button>
         </div>
 
-        <div class="vs-container">
-            <p class="vs-text">VS</p>
-            <button class="vote-btn" (click)="vote('left')">Vote Gauche</button>
-            <button class="vote-btn" (click)="vote('right')">Vote Droite</button>
+        <div class="battle-center">
+          <p class="vs-text">VS</p>
         </div>
 
-        <div class="cat-side right" [style.background-image]="'url(' + rightCat()!.url + ')'">
+        <div class="battle-block">
+          <div class="cat-img" [style.background-image]="'url(' + rightCat()!.url + ')'"></div>
+          <button class="vote-btn" (click)="vote('right')">Vote Droite</button>
         </div>
+      </div>
     </div>
+  }
 }
-}
-
