@@ -1,7 +1,6 @@
 import { Component, effect, inject, OnInit } from '@angular/core';
 import { CatService } from '../services/cat.service';
 import { CommonModule } from '@angular/common';
-import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { CatCardComponent } from "../cat-card/cat-card.component";
 
 @Component({
