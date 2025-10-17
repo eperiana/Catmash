@@ -93,7 +93,7 @@ jobs:
       - name: Deploy Front on Render
         run: |
           curl --request POST \
-               --url https://api.render.com/v1/services/srv-d3p1jfd6ubrc73am2ltg/deploys \
+               --url https://api.render.com/v1/services/srv-d3p2f0u3jp1c739s6kk0/deploys \
                --header 'accept: application/json' \
                --header "authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
                --header 'content-type: application/json' \
