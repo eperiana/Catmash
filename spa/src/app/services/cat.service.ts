@@ -2,12 +2,13 @@ import { computed, effect, Injectable, Signal, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cat } from '../models/cat';
 import { tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatService {
-  private apiUrl: string = 'http://localhost:8080/api/cats';
+  private apiUrl: string = environment.apiUrl;
   private _cats = signal<Cat[]>([]);
   private _leftCat = signal<Cat>({} as Cat);
   private _rightCat = signal<Cat>({} as Cat);
