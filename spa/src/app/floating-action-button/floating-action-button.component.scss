@@ -1,0 +1,59 @@
+@use '../../styles.scss' as *;
+
+.fab-container {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #2a003a, #440061);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.3), inset 0 0 8px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  min-width: 260px;
+  backdrop-filter: blur(6px); // effet verre léger
+  opacity: 0.95;
+
+  &:hover {
+    transform: translateX(-50%) translateY(-4px);
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #3b0053, #5a0082);
+  }
+
+  .fab-text {
+    font-size: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-secondary);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  }
+
+  .fab-subtext {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    color: var(--color-light);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.8rem;
+    min-width: 200px;
+
+    .fab-text {
+      font-size: 0.9rem;
+    }
+
+    .fab-subtext {
+      font-size: 0.75rem;
+    }
+  }
+}

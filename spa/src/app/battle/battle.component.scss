@@ -1,0 +1,140 @@
+@use '../../styles.scss' as *;
+
+.battle-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(138, 43, 226, 0.25),
+    rgba(10, 10, 20, 0.95)
+  );
+  color: var(--color-light);
+  padding: 2rem;
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at top right,
+      rgba(255, 0, 255, 0.15),
+      transparent 60%
+    );
+    z-index: 0;
+  }
+}
+
+.battle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.battle-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .cat-img {
+    width: 280px;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(153, 50, 204, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  .vote-btn {
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    color: white;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover {
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.6);
+      transform: translateY(-3px);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+}
+
+.battle-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .vs-text {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--color-secondary);
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+    animation: pulseGlow 1.5s infinite alternate;
+  }
+}
+
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 25px rgba(255, 0, 255, 0.9);
+  }
+}
+
+@media (max-width: 768px) {
+  .battle-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .battle-block .cat-img {
+    width: 90%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .battle-center .vs-text {
+    font-size: 3rem;
+  }
+
+  .battle-block .vote-btn {
+    width: 80%;
+    font-size: 1rem;
+  }
+}

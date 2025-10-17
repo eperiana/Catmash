@@ -1,0 +1,119 @@
+$color-bg-dark: #0e0b16;
+$color-primary: #a239ca; // violet néon
+$color-accent: #4717f6; // bleu électrique
+$color-light: #e7dfdd;
+$color-error: #ff3864;
+$color-success: #24e08e;
+$color-muted: #9e9e9e;
+
+$color-primary-glow: lighten($color-primary, 15%);
+$color-accent-glow: lighten($color-accent, 10%);
+$color-error-glow: lighten($color-error, 15%);
+
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+:root {
+  --color-bg-dark: #{$color-bg-dark};
+  --color-primary: #{$color-primary};
+  --color-accent: #{$color-accent};
+  --color-light: #{$color-light};
+  --color-error: #{$color-error};
+  --color-success: #{$color-success};
+  --color-muted: #{$color-muted};
+
+  --font-family: 'Poppins', sans-serif;
+
+  --text-color: var(--color-light);
+  --background-color: var(--color-bg-dark);
+}
+
+
+body {
+  background: radial-gradient(circle at top, #1a103d, #0e0b16);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-light);
+  text-shadow: 0 0 10px var(--color-primary);
+  margin: 0 0 1rem 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  @media (max-width: $breakpoint-sm) { font-size: 1.8rem; }
+}
+
+h2 {
+  font-size: 2rem;
+  @media (max-width: $breakpoint-sm) { font-size: 1.5rem; }
+}
+
+p {
+  color: var(--color-muted);
+  font-size: 1rem;
+  @media (max-width: $breakpoint-sm) { font-size: 0.9rem; }
+}
+
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 10px var(--color-primary-glow);
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--color-accent-glow);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(162, 57, 202, 0.2);
+  backdrop-filter: blur(6px);
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(162, 57, 202, 0.5);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px var(--color-accent); }
+  to { box-shadow: 0 0 20px var(--color-primary); }
+}
+
+.glow {
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
