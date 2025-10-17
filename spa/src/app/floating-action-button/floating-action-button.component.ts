@@ -13,7 +13,6 @@ export class FloatingActionButtonComponent {
   private router = inject(Router);
   private matchService = inject(MatchService);
 
-  /** mode = 'battle' | 'ranking' */
   @Input() mode: 'battle' | 'ranking' = 'battle';
 
   matchesPlayed = this.matchService.matchesPlayed; // signal

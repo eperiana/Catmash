@@ -1,7 +1,7 @@
 import { computed, effect, Injectable, Signal, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cat } from '../models/cat';
-import { catchError, tap, throwError } from 'rxjs';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
