@@ -40,7 +40,8 @@ export class CatService {
   }
 
   vote(catId: number) {
-    return this.http.post(`${this.apiUrl}/vote/${catId}`, {headers: this.headers}).pipe(
+    console.log(this.headers);
+    return this.http.post(`${this.apiUrl}/vote/${catId}`, {}, {headers: this.headers}).pipe(
       tap(() =>
         this._cats.update(oldCats => 
           oldCats.map(cat =>
