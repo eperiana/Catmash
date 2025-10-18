@@ -2,6 +2,7 @@ package fr.catmash.integration;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -21,10 +22,14 @@ public class CatControllerIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Value("${api.key}")
+    private String apiKey;
+
 
     @Test
     void testGetCats() throws Exception {
-        mockMvc.perform(get("/api/cats"))
+        mockMvc.perform(get("/api/cats")
+                .header("Authorization", "Bearer " + apiKey))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(greaterThan(0))));
     }
@@ -33,7 +38,8 @@ public class CatControllerIntegrationTest {
     void testVoteForExistingCat() throws Exception {
 
         mockMvc.perform(post("/api/cats/vote/{id}", 1L)
-                        .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer " + apiKey))
                 .andExpect(status().isOk());
     }
 
@@ -41,7 +47,25 @@ public class CatControllerIntegrationTest {
     void testVoteForNonExistingCat() throws Exception {
 
         mockMvc.perform(post("/api/cats/vote/{id}", 5000)
-                        .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer " + apiKey))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void testVoteWithNoApiKey() throws Exception {
+
+        mockMvc.perform(post("/api/cats/vote/{id}", 5000)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isUnauthorized());
+    }
+
+
+    @Test
+    void testGetWithNoApiKey() throws Exception {
+
+        mockMvc.perform(get("/api/cats")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isUnauthorized());
     }
 }

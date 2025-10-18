@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/api/cats'
+  apiUrl: 'http://localhost:8080/api/cats',
+  apiToken: 'token-test'
 };

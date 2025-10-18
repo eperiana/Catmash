@@ -1,5 +1,5 @@
 import { computed, effect, Injectable, Signal, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cat } from '../models/cat';
 import { tap } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -8,6 +8,10 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class CatService {
+  private headers = new HttpHeaders({
+    Authorization: `Bearer ${environment.apiToken}`
+  })
+
   private apiUrl: string = environment.apiUrl;
   private _cats = signal<Cat[]>([]);
   private _leftCat = signal<Cat>({} as Cat);
@@ -29,14 +33,15 @@ export class CatService {
   }
   
   fetchCats() {
-    this.http.get<Cat[]>(this.apiUrl).subscribe({
+    this.http.get<Cat[]>(this.apiUrl, {headers: this.headers}).subscribe({
       next: (data) => this._cats.set(data),
       error: (err) => console.error('Erreur API', err)
     });
   }
 
   vote(catId: number) {
-    return this.http.post(`${this.apiUrl}/vote/${catId}`, {}).pipe(
+    console.log(this.headers);
+    return this.http.post(`${this.apiUrl}/vote/${catId}`, {}, {headers: this.headers}).pipe(
       tap(() =>
         this._cats.update(oldCats => 
           oldCats.map(cat =>
