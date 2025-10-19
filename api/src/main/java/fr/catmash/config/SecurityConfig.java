@@ -18,13 +18,15 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final ApiKeyAuthFilter apiKeyAuthFilter;
+    private final FrontOriginAuthFilter frontOriginAuthFilter;
 
     @Value("${spring.profiles.active:dev}")
     private String activeProfile;
 
-    public SecurityConfig(ApiKeyAuthFilter apiKeyAuthFilter) {
-        this.apiKeyAuthFilter = apiKeyAuthFilter;
+
+
+    public SecurityConfig(FrontOriginAuthFilter frontOriginAuthFilter) {
+        this.frontOriginAuthFilter = frontOriginAuthFilter;
     }
 
     @Bean
@@ -33,10 +35,10 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/api/**").permitAll()
                         .anyRequest().permitAll()
                 )
-                .addFilterBefore(apiKeyAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(frontOriginAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
