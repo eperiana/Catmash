@@ -1,7 +1,7 @@
 # Catmash – Vote pour le chat le plus mignon !
 ## Description du projet
 
-Catmash est une application web full-stack permettant de voter pour le chat le plus mignon 🐾
+Catmash est une application web full-stack permettant de voter pour le chat le plus mignon
 Deux chats s’affichent à l’écran, l’utilisateur clique sur son préféré, et un classement global se met à jour automatiquement.
 
 Le projet a été conçu entièrement de A à Z, de la conception à la mise en ligne :
@@ -110,7 +110,7 @@ Lors du premier appel après inactivité, les services peuvent prendre 10–30 s
 
 Tu peux “réveiller” ton app en visitant directement :
 - le front : https://catmash-front.onrender.com
-- l’API : https://catmash-api.onrender.com/api/cats
+- l’API : https://catmash-im37.onrender.com
 
 ---
 ## Auteur
