@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>fr</groupId>
 	<artifactId>catmash</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>catmash</name>
 	<description>Catmash</description>
 	<url/>
