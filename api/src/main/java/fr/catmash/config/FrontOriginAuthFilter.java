@@ -11,6 +11,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ * Filtre pour gérer l'authentification via Origin
+ */
 @Component
 public class FrontOriginAuthFilter extends OncePerRequestFilter {
     @Value("${allowed.origin.front}")
