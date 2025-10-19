@@ -113,6 +113,20 @@ Tu peux “réveiller” ton app en visitant directement :
 - l’API : https://catmash-im37.onrender.com
 
 ---
+## Retour d’expérience
+
+Ce projet m’a permis de mettre en pratique l’ensemble des compétences nécessaires à la réalisation d’une application web complète, du développement à la mise en production.
+
+J’ai conçu et déployé Catmash en assurant la création du back-end (Spring Boot), du front-end (Angular), la gestion de la base de données, la mise en place de la sécurité via vérification d'Origine, ainsi que la CI/CD automatisée et le déploiement Dockerisé sur Render.
+
+
+Ce projet m’a également permis de renforcer mes connaissances sur :
+- la structuration et la communication entre un front et un back, 
+- la configuration et le déploiement d’applications conteneurisées, 
+- la gestion des environnements (local / production), 
+- et les bonnes pratiques de maintenance et de documentation.
+
+---
 ## Auteur
 
 Etienne Perianayagassamy
