@@ -61,16 +61,6 @@ jobs:
         run: npm ci
         working-directory: ./spa
 
-      - name: Inject environment variables
-        run: |
-          echo "export const environment = {" > ./spa/src/environments/environment.prod.ts
-          echo "  production: true," >> ./spa/src/environments/environment.prod.ts
-          echo "  apiUrl: 'https://catmash-im37.onrender.com/api/cats'," >> ./spa/src/environments/environment.prod.ts
-          echo "  apiToken: '${{ secrets.API_KEY }}'" >> ./spa/src/environments/environment.prod.ts
-          echo "};" >> ./spa/src/environments/environment.prod.ts
-
-      - name: Debug environment file
-        run: cat ./spa/src/environments/environment.prod.ts
 
       - name: Build Angular app
         run: npm run build -- --configuration=production

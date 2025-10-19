@@ -22,14 +22,11 @@ public class CatControllerIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Value("${api.key}")
-    private String apiKey;
-
 
     @Test
     void testGetCats() throws Exception {
         mockMvc.perform(get("/api/cats")
-                .header("Authorization", "Bearer " + apiKey))
+                .header("Origin", "http://localhost:4200"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(greaterThan(0))));
     }
@@ -39,7 +36,7 @@ public class CatControllerIntegrationTest {
 
         mockMvc.perform(post("/api/cats/vote/{id}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
-                .header("Authorization", "Bearer " + apiKey))
+                .header("Origin", "http://localhost:4200"))
                 .andExpect(status().isOk());
     }
 
@@ -48,23 +45,14 @@ public class CatControllerIntegrationTest {
 
         mockMvc.perform(post("/api/cats/vote/{id}", 5000)
                         .contentType(MediaType.APPLICATION_JSON)
-                .header("Authorization", "Bearer " + apiKey))
+                .header("Origin", "http://localhost:4200"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    void testVoteWithNoApiKey() throws Exception {
+    void testVoteOriginNotAuthorized() throws Exception {
 
         mockMvc.perform(post("/api/cats/vote/{id}", 5000)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isUnauthorized());
-    }
-
-
-    @Test
-    void testGetWithNoApiKey() throws Exception {
-
-        mockMvc.perform(get("/api/cats")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isUnauthorized());
     }
